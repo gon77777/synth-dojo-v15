@@ -1,0 +1,4 @@
+const fs=require('fs'),path=require('path'),vm=require('vm');
+const w=path.join(__dirname,'..','www','js'),ctx={console};ctx.window=ctx;vm.createContext(ctx);
+const src=fs.readFileSync(path.join(__dirname,'validate.js'),'utf8'),m=src.match(/\[('params\.js'[^\]]*)\]\.forEach/);
+const files=eval('['+m[1]+']');
